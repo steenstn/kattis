@@ -1,1 +1,1 @@
-"Some solutions to Kattis tests" 
+Some solutions to Kattis tests
