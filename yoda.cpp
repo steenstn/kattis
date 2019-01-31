@@ -11,11 +11,7 @@ int getDigitAtIndex(int index, int value) {
 }
 
 int getNumDigits(int value) {
-    int numDigits = 0;
-    while(value%(int)round(pow(10,numDigits)) != value) {
-        numDigits++;
-    }
-    return numDigits;
+    return ceil(log10(value+1));
 
 }
 int main(void) {
