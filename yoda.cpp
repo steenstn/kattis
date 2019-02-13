@@ -12,7 +12,6 @@ int getDigitAtIndex(int index, int value) {
 
 int getNumDigits(int value) {
     return ceil(log10(value+1));
-
 }
 int main(void) {
     int input1, input2;
