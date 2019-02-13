@@ -4,7 +4,6 @@
 
 using namespace std;
 
-bool fail = false;
 struct bitstring {
     bitstring(string input) {
         this->bits = input;
@@ -21,7 +20,10 @@ struct bitstring {
                 questionMarks.push_back(i);
             }
         }
+        fail = false;
     }
+    
+    bool fail;
     string bits;
     int numOnes;
     int numZeros;
@@ -39,7 +41,7 @@ struct bitstring {
                 }
             }
             if(this->numZeros != target.numZeros && this->numOnes != target.numOnes) {
-                fail = true;
+                this->fail = true;
                 return -1;
             }
             int differences = 0;
@@ -49,7 +51,7 @@ struct bitstring {
                 }
             }
             if(differences%2 != 0) {
-                fail = true;
+                this->fail = true;
                 return -1;
             }
             return zeroFlips + differences/2;
@@ -100,9 +102,8 @@ int main(void) {
         allT.push_back(bitstring(inputT));
     }
     for(int i = 0; i < numCases; i++) {
-        fail = false;
         int result = allS[i].convertTo(allT[i]);
-        if(fail) {
+        if(allS[i].fail) {
             cout << "Case " << (i+1) << ": " << (-1) << endl;
         } else {
             cout << "Case " << (i+1) << ": " << result << endl;
